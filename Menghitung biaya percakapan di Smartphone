@@ -1,0 +1,69 @@
+/* 
+ * UTS PBO - Bintang Arponggo - 2022071081
+ * 
+ * Menghitung biaya pemakaian pulsa
+ * Menghitung biaya percakapan di Smartphone
+ * 
+ */
+
+
+import java.util.Scanner;
+
+public class BiayaPercakapan1 {
+    private int jamMulai, menitMulai, detikMulai;
+    private int jamSelesai, menitSelesai, detikSelesai;
+    private int lamaPercakapan;
+    private int biayaPercakapan;
+
+    public void inputWaktuMulai() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Masukkan jam mulai percakapan: ");
+        jamMulai = scanner.nextInt();
+        System.out.print("Masukkan menit mulai percakapan: ");
+        menitMulai = scanner.nextInt();
+        System.out.print("Masukkan detik mulai percakapan: ");
+        detikMulai = scanner.nextInt();
+    }
+
+    public void inputWaktuSelesai() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Masukkan jam selesai percakapan: ");
+        jamSelesai = scanner.nextInt();
+        System.out.print("Masukkan menit selesai percakapan: ");
+        menitSelesai = scanner.nextInt();
+        System.out.print("Masukkan detik selesai percakapan: ");
+        detikSelesai = scanner.nextInt();
+    }
+
+        public void hitungLamaPercakapan() {
+        int totalDetikMulai = (jamMulai * 3600) + (menitMulai * 60) + detikMulai;
+        int totalDetikSelesai = (jamSelesai * 3600) + (menitSelesai * 60) + detikSelesai;
+
+        lamaPercakapan = totalDetikSelesai - totalDetikMulai;
+    }
+
+    public void hitungBiayaPercakapan() {
+        int totalPulsa = lamaPercakapan / 5;
+        biayaPercakapan = totalPulsa * 150;
+    }
+
+    public void displayHasil() {
+        System.out.println("Lama Percakapan: " + lamaPercakapan + " detik");
+        System.out.println("Biaya Percakapan: Rp. " + biayaPercakapan + ".-");
+    }
+
+    public static void main(String[] args) {
+        Percakapan percakapan = new Percakapan();
+
+        System.out.println("=== Perhitungan Biaya Percakapan ===");
+        System.out.println("-Input waktu mulai percakapan-");
+        percakapan.inputWaktuMulai();
+
+        System.out.println("-Input waktu selesai percakapan-");
+        percakapan.inputWaktuSelesai();
+
+        percakapan.hitungLamaPercakapan();
+        percakapan.hitungBiayaPercakapan();
+        percakapan.displayHasil();
+    }
+}
