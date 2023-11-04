@@ -1,0 +1,48 @@
+java.util.Scanner;
+
+// Kelas dasar (superclass) untuk bentuk geometri
+class BentukGeometri {
+    public double hitungLuas() {
+        return 0;
+    }
+
+    public double hitungKeliling() {
+        return 0;
+    }
+}
+
+// Kelas turunan (subclass) untuk lingkaran
+class Lingkaran extends BentukGeometri {
+    private double jariJari;
+
+    public Lingkaran(double jariJari) {
+        this.jariJari = jariJari;
+    }
+
+    @Override
+    public double hitungLuas() {
+        return Math.PI * jariJari * jariJari;
+    }
+
+    @Override
+    public double hitungKeliling() {
+        return 2 * Math.PI * jariJari;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Masukkan jari-jari lingkaran: ");
+        double jariJari = scanner.nextDouble();
+
+        Lingkaran lingkaran = new Lingkaran(jariJari);
+
+        double luas = lingkaran.hitungLuas();
+        double keliling = lingkaran.hitungKeliling();
+
+        System.out.printf("Luas lingkaran: %.2f\n", luas);
+        System.out.printf("Keliling lingkaran: %.2f\n", keliling);
+    }
+}
